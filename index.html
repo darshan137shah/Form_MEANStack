@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src='https://code.angularjs.org/1.5.5/angular.min.js'></script>
+    <script type="text/javascript" src='/master.js'></script>
+  </head>
+  <body ng-app='myapp'>
+    <div ng-controller='formone'>
+      <form name='myForm'>
+        <input type="text" name='input' ng-model='users.fname' ng-minlength="1" ng-required="true">
+        <input type="text" name='input' ng-model='users.lname' ng-minlength="1" ng-required="true">
+        <input type="text" name='input' ng-model='users.email' ng-minlength="1" ng-required="true">
+        <input type="text" name='input' ng-model='users.location' ng-minlength="1" ng-required="true">
+        <input type="text" name='input' ng-model='users.company' ng-minlength="1" ng-required="true">
+        <input type="radio" name='input' ng-model='users.gender' ng-required="true" value='Male'>
+        <input type="radio" name='input' ng-model='users.gender' ng-required="true" value='Female'>
+        <input type="button" value="Submit" ng-click='sub(users)' ng-disabled='myForm.input.$invalid'>
+      </form>
+      <p>{{myForm.input.$invalid}}</p>
+      <table>
+        <tr>
+          <th>Firstname</th>
+        </tr>
+        <tr ng-repeat='user in main'>
+          <td>{{user['fname']}}</td>
+          <td>{{user['fname']}}</td>
+          <td>{{user['fname']}}</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
