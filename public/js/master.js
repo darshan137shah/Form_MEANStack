@@ -12,6 +12,11 @@ app.factory('dbRead', function($http) {
 
     setData: function(users) {
       return $http.post('http://localhost:3000/dbPost', users);
+    },
+
+    remData: function(id) {
+      console.log(id);
+      return $http.post('http://localhost:3000/remData', id);
     }
   }
 })
