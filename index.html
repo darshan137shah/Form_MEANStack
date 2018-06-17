@@ -4,31 +4,63 @@
     <meta charset="utf-8">
     <title></title>
     <script type="text/javascript" src='https://code.angularjs.org/1.5.5/angular.min.js'></script>
-    <script type="text/javascript" src='/master.js'></script>
+    <script type="text/javascript" src='/js/master.js'></script>
+    <script type="text/javascript" src='/js/controller.js'></script>
   </head>
   <body ng-app='myapp'>
     <div ng-controller='formone'>
-      <form name='myForm'>
-        <input type="text" name='input' ng-model='users.fname' ng-minlength="1" ng-required="true">
-        <input type="text" name='input' ng-model='users.lname' ng-minlength="1" ng-required="true">
-        <input type="text" name='input' ng-model='users.email' ng-minlength="1" ng-required="true">
-        <input type="text" name='input' ng-model='users.location' ng-minlength="1" ng-required="true">
-        <input type="text" name='input' ng-model='users.company' ng-minlength="1" ng-required="true">
-        <input type="radio" name='input' ng-model='users.gender' ng-required="true" value='Male'>
-        <input type="radio" name='input' ng-model='users.gender' ng-required="true" value='Female'>
-        <input type="button" value="Submit" ng-click='sub(users)' ng-disabled='myForm.input.$invalid'>
+      <form name='myForm' id='myForm'>
+        <div>
+          <label for="input1">Firstname<input type="text" name='input1' ng-model='users.fname' ng-minlength="1" ng-required="true"></label>
+          <p ng-if="myForm.input1.$invalid && myForm.input1.$dirty">Please insert the username</p>
+        </div>
+        <div>
+          <label for="input2">Lastname<input type="text" name='input2' ng-model='users.lname' ng-minlength="1" ng-required="true"></label>
+          <p ng-if="myForm.input2.$invalid && myForm.input2.$dirty">Please insert the username</p>
+        </div>
+        <div>
+          <label for="input3">Email<input type="text" name='input3' ng-model='users.email' ng-minlength="1" ng-required="true"></label>
+          <p ng-if="myForm.input3.$invalid && myForm.input3.$dirty">Please insert the username</p>
+        </div>
+        <div>
+          <label for="input4">Location<input type="text" name='input4' ng-model='users.location' ng-minlength="1" ng-required="true"></label>
+          <p ng-if="myForm.input4.$invalid && myForm.input4.$dirty">Please insert the username</p>
+        </div>
+        <div>
+          <label for="input5">Company<input type="text" name='input5' ng-model='users.company' ng-minlength="1" ng-required="true"></label>
+          <p ng-if="myForm.input5.$invalid && myForm.input5.$dirty">Please insert the username</p>
+        </div>
+        <div>
+          <label for="input6">Male
+          <input type="radio" name='input6' ng-model='users.gender' ng-required="true" value='Male'>
+          </label>
+          <label for="input6">Female
+          <input type="radio" name='input6' ng-model='users.gender' ng-required="true" value='Female'>
+          </label>
+          <p ng-if="myForm.input6.$invalid && myForm.input6.$dirty">Please insert the username</p>
+        </div>
+        <input type="button" value="Submit" ng-click='dbPost(users)' ng-disabled='Form.$invalid'>
       </form>
       <p>{{myForm.input.$invalid}}</p>
-      <table>
+      <table ng-if='trFlag'>
         <tr>
           <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Location</th>
+          <th>Company</th>
+          <th>Gender</th>
         </tr>
         <tr ng-repeat='user in main'>
           <td>{{user['fname']}}</td>
-          <td>{{user['fname']}}</td>
-          <td>{{user['fname']}}</td>
+          <td>{{user['lname']}}</td>
+          <td>{{user['email']}}</td>
+          <td>{{user['location']}}</td>
+          <td>{{user['company']}}</td>
+          <td>{{user['gender']}}</td>
         </tr>
       </table>
+      <p ng-if='errFlag'>Error!! Data is not submitted.</p>
     </div>
   </body>
 </html>
